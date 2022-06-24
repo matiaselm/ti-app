@@ -1,0 +1,13 @@
+ul {
+    list-style: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+input, button {
+    width: 100%;
+}
