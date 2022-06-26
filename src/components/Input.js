@@ -1,33 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Input = ({ type, name, onChange, value, options, label, key = 'id', valueKey = 'name', children }) => {
-  const [ isMenuVisible, setIsMenuVisible ] = useState(false);
-  
-  const toggle = (e) => {
-    e.preventDefault();
-    setIsMenuVisible(!isMenuVisible);
-  };
+const Input = ({ type, name, onChange, onClick, value, options, label, key = 'id', valueKey = 'name', children }) => {
 
-  const handleOnSelect = (e, value) => {
+  const handleOnChange = (e, value) => {
+    console.log(e, value);
     e.preventDefault();
     onChange(value);
-    setIsMenuVisible(false);
   };
 
-  return <div>
+  return <div className='inputcomponent padding'>
     {label && <label htmlFor={name}>{label}</label>}
     {type === 'select' && !!options && <div>
-      <button type='button' name={name} onClick={toggle}>
-        <>{Object.entries(options.filter(item => item[key] === value)[0] || {[valueKey]: 'Valitse jotain'}).map(([entryKey, value]) => entryKey === valueKey && value)}</>
-      </button>
-      {isMenuVisible && <ul>
-        {options.map((option, i) => <li key={i}>
-          <a href='_black' onClick={e => handleOnSelect(e, option[key])}>{option.name || option[key]}</a>
-        </li>)}
-      </ul>}
+      <span className="dropdown" name={name}>
+        <div>{Object.entries(options.filter(item => item[key] === value)[0] || {[valueKey]: 'Valitse jotain'}).map(([entryKey, value]) => entryKey === valueKey && value)}</div>
+        <ul className="dropdown-content">
+          {options.map((option, i) => <li key={i}>
+            <a href='_black' className='dropdown-element' onClick={e => handleOnChange(e, option[key])}>{option.name || option[key]}</a>
+          </li>)}
+        </ul>
+      </span>
     </div>}
-    {type === 'submit' && <button>{children}</button>}
-    {!['submit', 'select'].includes(type) && <input type={type} name={name} onChange={onChange} value={value} />}
+    {type === 'submit' && <button onClick={onClick}>{children}</button>}
+    {!['submit', 'select'].includes(type) && <input type={type} name={name} onChange={(e) => handleOnChange(e, e.target.value)} value={value} />}
   </div>
 }
 

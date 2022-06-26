@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Factions from './screens/Factions';
 import Faction from './screens/Faction';
 import { Routes, Route, Link } from "react-router-dom";
-import './Styles.css';
 
 import './services/IconLibrary';
 

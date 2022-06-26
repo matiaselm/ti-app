@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { bareAxios as axios } from '../services/Axios';
 import useStorage from '../hooks/useStorageHooks';
-import { Input, Skeleton } from '../components';
+import { Input } from '../components';
 
 const Faction = () => {
   const { id } = useParams();
@@ -37,7 +37,8 @@ const Faction = () => {
     }
   }, [id]);
 
-  const onSubmit = async () => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
     setSubmitting(true);
     try {
       let res;
@@ -53,26 +54,15 @@ const Faction = () => {
     setSubmitting(false);
   }
 
-  const onChange = (e, key) => {
-    console.log(e.target.value, e.target.type)
-    setFaction(prev => ({ ...prev, [key]: e.target.value }));
-  }
-
-  return <div>
-    <h2>{(loading ? <Skeleton width={400} /> : label) || 'New faction'}</h2>
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
-    <div style={{ padding: 10, backgroundColor: '#ccc', borderRadius: '1em' }}>
-      {!loading ? <form onSubmit={onSubmit} sx={{ width: '25ch' }}>
-        <Input type='text'   label='Name' value={faction.name} onChange={(e) => onChange(e, 'name')} />
-        <Input type='select' label='Tendency' value={faction.tendency_id} onChange={(e) => onChange(e, 'tendency_id')} options={[{ id: 0, name: '' }, ...resources['tendencies']]} />
-        <Input type='number' label='Commodities' value={faction.commodities || 0} onChange={(e) => onChange(e, 'commodities')} InputLabelProps={{ shrink: true }} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
-        <button loading={submitting} onClick={onSubmit}>Tallenna</button>
-      </form> : <>
-        <Skeleton width={300} height={40} />
-        <Skeleton width={300} height={40} />
-        <Skeleton width={300} height={40} />
-      </>}
-    </div>
+  return <div className='faction'>
+    <h2 className={loading ? `h2 skeleton` : 'h2'}>{!loading && (label || 'New faction')}</h2>
+    <div className='editform rounded padding shadow'>
+      <form onSubmit={onSubmit}>
+        <Input type='text'   label='Name' value={faction.name} onChange={(name) => setFaction(prev => ({ ...prev, name }))} />
+        <Input type='select' label='Tendency' value={faction.tendency_id} onChange={tendency_id => setFaction(prev => ({ ...prev, tendency_id }))} options={resources['tendencies']} />
+        <Input type='number' label='Commodities' value={faction.commodities || 0} onChange={commodities => setFaction(prev => ({ ...prev, commodities }))} InputLabelProps={{ shrink: true }} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
+        <Input type='submit' onClick={onSubmit}>Tallenna</Input>
+      </form>
     </div>
   </div>
 }

@@ -1,0 +1,73 @@
+.App {
+    display: flex;
+    flex-direction: row;
+}
+
+.navigation {
+    flex: 1;
+    max-width: 14em;
+    min-width: 10em;
+    background-color: #ccc;
+    margin-right: 2em;
+}
+
+.content {
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.padding {
+    padding: 0.5em;
+}
+
+.margin {
+    margin: 1em;
+}
+
+.rounded {
+    border-radius: 0.5em;
+}
+
+.shadow {
+    box-shadow: 0.1em 0.25em 0.25em rgba(0, 0, 0, 0.25);
+}
+
+ul {
+    list-style: none;
+}
+
+td {
+    padding-top:  1em;
+    padding-left: 1em;
+}
+
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+}
+
+.flexitem {
+    flex: 1;
+}
+
+.editform {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    max-width: 15em;
+    background-color: #ccc;
+}
+
+.inputcomponent {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    width: inherit;
+}

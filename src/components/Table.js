@@ -19,7 +19,7 @@ const Table = ({ data = [], columns, actions }) => {
     <tbody>
       {data.map((row, i) => <tr key={i}>
         {!!actions && <td className='row'>
-          {actions.map((action, i) => <a key={i} href={ action.intent } onClick={e => onClickAction(e, row, action.handler)} className='rowitem'>
+          {actions.map((action, i) => <a key={i} href={ action.intent } onClick={e => onClickAction(e, row, action.handler)} className='flexitem'>
             <Icon icon={action.icon} />
           </a>)}
         </td>}
