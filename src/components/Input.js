@@ -1,6 +1,7 @@
 import React from 'react';
+import Loading from './Loading';
 
-const Input = ({ type, name, onChange, onClick, value, options, label, key = 'id', valueKey = 'name', children }) => {
+const Input = ({ type, name, onChange, onClick, value, options, label, key = 'id', valueKey = 'name', children, loading }) => {
 
   const handleOnChange = (e, value) => {
     console.log(e, value);
@@ -20,7 +21,7 @@ const Input = ({ type, name, onChange, onClick, value, options, label, key = 'id
         </ul>
       </span>
     </div>}
-    {type === 'submit' && <button onClick={onClick}>{children}</button>}
+    {type === 'submit' && <button onClick={onClick}>{loading ? <Loading /> : children}</button>}
     {!['submit', 'select'].includes(type) && <input type={type} name={name} onChange={(e) => handleOnChange(e, e.target.value)} value={value} />}
   </div>
 }

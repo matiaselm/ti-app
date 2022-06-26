@@ -1,3 +1,4 @@
+/* APP */
 .App {
     display: flex;
     flex-direction: row;
@@ -34,6 +35,7 @@
     box-shadow: 0.1em 0.25em 0.25em rgba(0, 0, 0, 0.25);
 }
 
+/* ELEMENTS */
 ul {
     list-style: none;
 }
@@ -43,6 +45,7 @@ td {
     padding-left: 1em;
 }
 
+/* FLEX */
 .row {
     display: flex;
     flex-wrap: nowrap;
@@ -55,19 +58,38 @@ td {
     flex: 1;
 }
 
-.editform {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: left;
-    max-width: 15em;
-    background-color: #ccc;
+/* SKELETON */
+.skeleton {
+    background-color: #ddd;
+    border-radius: 5px;
+    margin: 0;
+    max-width: 600px;
+    min-height: 1em;
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    animation: skeleton-loading 1s linear infinite alternate;
 }
 
-.inputcomponent {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: left;
-    width: inherit;
+.skeleton-text {
+    width: 100%;
+    height: .5rem;
+    margin-bottom: .25rem;
+    border-radius: .125rem;
 }
+
+.skeleton-text:last-child {
+    margin-bottom: 0;
+    width: 80%;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(0, 0%, 77%);
+    }
+
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
+}
+

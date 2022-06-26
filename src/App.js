@@ -36,7 +36,7 @@ const App = () => {
 
   return (
     <div className='App' style={windowDimension}>
-      <div className='navigation'>
+      <div className='navigation shadow'>
         <ul>
         { links.map((link, i) => <li key={i}><Link to={link.url}>{link.name}</Link></li> )}
         </ul>

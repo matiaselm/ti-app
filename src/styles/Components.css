@@ -1,3 +1,4 @@
+/* DROPDOWN */
 .dropdown {
     height: 100%;
     width: 100%;
@@ -30,4 +31,37 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+/* SPINNER */
+.spinner {
+    animation: spinner-loading 1s linear infinite;
+}
+
+@keyframes spinner-loading {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* INPUT */
+.editform {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    max-width: 15em;
+    background-color: #ccc;
+}
+
+.inputcomponent {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    width: inherit;
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { bareAxios as axios } from '../services/Axios';
 import useStorage from '../hooks/useStorageHooks';
-import { Input } from '../components';
+import { Input, Icon } from '../components';
 
 const Faction = () => {
   const { id } = useParams();
@@ -61,7 +61,7 @@ const Faction = () => {
         <Input type='text'   label='Name' value={faction.name} onChange={(name) => setFaction(prev => ({ ...prev, name }))} />
         <Input type='select' label='Tendency' value={faction.tendency_id} onChange={tendency_id => setFaction(prev => ({ ...prev, tendency_id }))} options={resources['tendencies']} />
         <Input type='number' label='Commodities' value={faction.commodities || 0} onChange={commodities => setFaction(prev => ({ ...prev, commodities }))} InputLabelProps={{ shrink: true }} inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
-        <Input type='submit' onClick={onSubmit}>Tallenna</Input>
+        <Input type='submit' onClick={onSubmit} loading={submitting}>Tallenna</Input>
       </form>
     </div>
   </div>
