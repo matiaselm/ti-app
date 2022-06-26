@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './table.css'
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 
 const Table = ({ data = [], columns, actions }) => {
   const onClickAction = (e, row, handler) => {
@@ -18,16 +18,15 @@ const Table = ({ data = [], columns, actions }) => {
     </thead>
     <tbody>
       {data.map((row, i) => <tr key={i}>
-        {!!actions && actions.map((action, i) => <td key={i}><a href='_blank' onClick={e => onClickAction(e, row, action.handler)}>{action.name}</a></td>)}
-        {Object.entries(columns).map(([key, options]) => {
-          if (typeof options?.transform === 'function') {
-            return <td key={key}>{options.transform(row[key], row)}</td>
-          }
-          if (typeof row[key] !== 'object') {
-            return <td key={key} style={options?.style}>{row[key]}</td>
-          }
-          return <td key={key} style={options?.style}></td>
-        })}
+        {!!actions && <td className='row'>
+          {actions.map((action, i) => <a key={i} href={ action.intent } onClick={e => onClickAction(e, row, action.handler)} className='rowitem'>
+            <Icon icon={action.icon} />
+          </a>)}
+        </td>}
+        {Object.entries(columns).map(([key, options]) => <td key={key} style={{ minHeight: '2em' }}>
+          {options.transform ? options.transform(row[key]) : typeof row[key] !== 'object' && row[key]}
+        </td>
+        )}
       </tr>
       )}
     </tbody>

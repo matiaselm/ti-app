@@ -1,0 +1,38 @@
+.App {
+    display: flex;
+    flex-direction: row;
+}
+
+.navigation {
+    flex: 1;
+    max-width: 14em;
+    min-width: 10em;
+    background-color: #ccc;
+    margin-right: 2em;
+}
+
+.content {
+    flex: 6;
+    overflow-y: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+td {
+    padding-top:  1em;
+    padding-left: 1em;
+}
+
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+}
+
+.rowitem {
+    flex: 1;
+}

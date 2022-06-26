@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import './input.css';
 
 const Input = ({ type, name, onChange, value, options, label, key = 'id', valueKey = 'name', children }) => {
   const [ isMenuVisible, setIsMenuVisible ] = useState(false);
   
-  const toggleSelect = (e) => {
-    e?.preventDefault();
+  const toggle = (e) => {
+    e.preventDefault();
     setIsMenuVisible(!isMenuVisible);
   };
 
@@ -13,12 +12,12 @@ const Input = ({ type, name, onChange, value, options, label, key = 'id', valueK
     e.preventDefault();
     onChange(value);
     setIsMenuVisible(false);
-  }
+  };
 
   return <div>
     {label && <label htmlFor={name}>{label}</label>}
     {type === 'select' && !!options && <div>
-      <button type='button' name={name} onClick={toggleSelect}>
+      <button type='button' name={name} onClick={toggle}>
         <>{Object.entries(options.filter(item => item[key] === value)[0] || {[valueKey]: 'Valitse jotain'}).map(([entryKey, value]) => entryKey === valueKey && value)}</>
       </button>
       {isMenuVisible && <ul>
