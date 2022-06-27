@@ -71,7 +71,6 @@ const Faction = () => {
   }
 
   const onChangeSystems = (i, key, value) => {
-    console.log(i, key, value);
     setSystems(prev => {
       const newSystems = [ ...prev ];
       newSystems[i] = { ...newSystems[i], [key]: value };
