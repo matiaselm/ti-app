@@ -8,6 +8,7 @@ const useStorage = () => {
     let res = localStorage.getItem(key);
     if(!!res) {
       setResources(prev => ({ ...prev, [key]: JSON.parse(res) }));
+      return;
     }
     axios.get(key).then(res => {
       localStorage.setItem(key, JSON.stringify(res.data));

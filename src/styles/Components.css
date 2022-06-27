@@ -1,3 +1,57 @@
+.component {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left; 
+}
+
+.button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #fafafa;
+}
+
+.buttonchildren {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonchild {
+    flex: 1;
+}
+
+.actionbutton {
+    border-radius: 1em;
+    width: 1em;
+    height: 1em;
+    padding: 0.5em;
+}
+
+.actionbutton:hover {
+    cursor: pointer;
+    background-color: #fafafa;
+}
+
+.input {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
 /* DROPDOWN */
 .dropdown {
     height: 100%;
@@ -5,7 +59,6 @@
     position: relative;
     display: inline-block;
     vertical-align: top;
-    border: 1px solid #ddd;
 }
 
 .dropdown-content {
@@ -14,14 +67,16 @@
     background-color: #f9f9f9;
     min-width: 10em;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    padding: 12px 16px;
+    padding: 1em 1.5em;
     z-index: 1;
     margin: 0;
 }
 
 .dropdown-element {
+    flex: 1;
     color: #000;
     text-decoration: none;
+    width: 10em;
 }
 
 .dropdown-element:hover {
@@ -30,7 +85,8 @@
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 /* SPINNER */
@@ -58,10 +114,29 @@
     background-color: #ccc;
 }
 
-.inputcomponent {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: left;
-    width: inherit;
+/* TABLE */
+.table {
+
+}
+
+.tablehead {
+    background-color: #ddd;
+    padding: 0.5em;
+}
+
+.tablehead-column {
+    text-align: left;
+    padding: 0.5em;
+}
+
+.tablerow {
+    padding: 0.5em;
+}
+
+.tablerow:hover {
+    background-color: #ddd;
+}
+
+.tablecolumn {
+    padding: 0.5em;
 }

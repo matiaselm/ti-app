@@ -1,22 +1,43 @@
-/* APP */
-.App {
-    display: flex;
-    flex-direction: row;
-}
-
 .navigation {
     flex: 1;
-    max-width: 14em;
-    min-width: 10em;
+    display: flex;
+    flex-direction: row;
+    height: 2em;
     background-color: #ccc;
-    margin-right: 2em;
 }
 
 .content {
-    flex: 6;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    margin-left: 1em;
+}
+
+@media (min-width: 1000px) {
+
+    /* APP */
+    .App {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .content {
+        flex: 6;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        margin-left: 1em;
+    }
+
+    .navigation {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        max-width: 14em;
+        min-width: 10em;
+        background-color: #ccc;
+        height: 100%;
+        box-sizing: border-box;
+    }
 }
 
 .padding {
@@ -33,6 +54,14 @@
 
 .shadow {
     box-shadow: 0.1em 0.25em 0.25em rgba(0, 0, 0, 0.25);
+}
+
+.margin-top {
+    margin-top: 1em;
+}
+
+.transparent {
+    background-color: transparent;
 }
 
 /* ELEMENTS */
@@ -52,6 +81,10 @@ td {
     flex-direction: row;
     align-items: left;
     justify-content: left;
+}
+
+.right {
+    text-align: right;
 }
 
 .flexitem {
@@ -92,4 +125,3 @@ td {
         background-color: hsl(200, 20%, 95%);
     }
 }
-

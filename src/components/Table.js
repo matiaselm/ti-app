@@ -9,21 +9,21 @@ const Table = ({ data = [], columns, actions }) => {
     }
   }
 
-  return <table>
-    <thead>
-      <tr>
-        { !!actions && <th>Actions</th> }
-        { Object.entries(columns).map(([key, value]) => <th key={key} style={value.style}>{value.label || key}</th>)}
+  return <table className='table'>
+    <thead className='tablehead'>
+      <tr className='tablerow'>
+        { !!actions && <th className='tablehead-column'>Actions</th> }
+        { Object.entries(columns).map(([key, value]) => <th className='tablehead-column' key={key} style={value.style}>{value.label || key}</th>)}
       </tr>
     </thead>
-    <tbody>
-      {data.map((row, i) => <tr key={i}>
-        {!!actions && <td className='row'>
-          {actions.map((action, i) => <a key={i} href={ action.intent } onClick={e => onClickAction(e, row, action.handler)} className='flexitem'>
-            <Icon icon={action.icon} />
+    <tbody className='tablebody'>
+      {data.map((row, i) => <tr key={i} className='tablerow'>
+        {!!actions && <td className='tablecolumn row'>
+          {actions.map((action, i) => <a key={i} href={ action.intent } onClick={e => onClickAction(e, row, action.handler)} className='flexitem padding'>
+            <Icon icon={action.icon} className='actionbutton' />
           </a>)}
         </td>}
-        {Object.entries(columns).map(([key, options]) => <td key={key} style={{ minHeight: '2em' }}>
+        {Object.entries(columns).map(([key, options]) => <td key={key} className='tablecolumn'>
           {options.transform ? options.transform(row[key]) : typeof row[key] !== 'object' && row[key]}
         </td>
         )}

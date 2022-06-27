@@ -36,6 +36,9 @@ const Faction = () => {
       label: 'Tendency',
       transform: tendency => !!tendency && tendency.name
     },
+    planets_count: {
+      label: 'Planets'
+    },
     created_at: {
       label: 'Created At',
       transform: created_at => format(new Date(created_at), 'yyyy-MM-dd')

@@ -36,10 +36,8 @@ const App = () => {
 
   return (
     <div className='App' style={windowDimension}>
-      <div className='navigation shadow'>
-        <ul>
-        { links.map((link, i) => <li key={i}><Link to={link.url}>{link.name}</Link></li> )}
-        </ul>
+      <div className='navigation padding shadow'>
+        { links.map((link, i) => <Link className='padding' key={i} to={link.url}>{link.name}</Link> )}
       </div>
       <div className='content'>
         <Routes>
