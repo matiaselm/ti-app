@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { bareAxios as axios } from '../services/Axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
-import { Table, Input } from '../components';
+import { Table, Input, Button } from '../components';
 import debounce from '../hooks/useDebounce';
 
 const Faction = () => {
@@ -75,9 +75,11 @@ const Faction = () => {
   ];
 
   return <div>
-    <h2>Factions</h2>
-    <Input type='text' value={search} onChange={setSearch} className='margin' placeholder='Search' />
-    <Link to='/factions/0'>Create</Link>
+    <div className='tools'>
+      <h2 className='tool'>Factions</h2>
+      <Input  className='tool margin' style={{ flex: 2 }} type='text' value={search} onChange={setSearch} placeholder='Search' />
+      <Button className='tool margin' icon='plus' onClick={() => navigate('/factions/0')}>Create new</Button>
+    </div>
     <Table data={factions} columns={columns} actions={actions} />
   </div>
 }

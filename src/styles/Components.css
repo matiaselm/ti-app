@@ -114,6 +114,19 @@
     background-color: #ccc;
 }
 
+.tools {
+    max-width: 40em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tool {
+    flex: 1;
+    margin-right: 1em;
+    height: max-content;
+}
+
 /* TABLE */
 .table {
 
