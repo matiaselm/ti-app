@@ -2,32 +2,35 @@ import React, { useState, useEffect } from 'react';
 import { bareAxios as axios } from '../services/Axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
-import { Table } from '../components';
+import { Table, Input } from '../components';
+import debounce from '../hooks/useDebounce';
 
 const Faction = () => {
   const [ systems, setSystems ] = useState([]);
+  const [ search, setSearch ] = useState('');
   const navigate = useNavigate();
-
-  useEffect(() => {
-    getSystems();
-  }, []);
 
   const getSystems = async () => {
     try {
-      const res = await axios.get('systems');
+      const res = await axios.get('systems', { params: { search }});
       setSystems(res.data);
     } catch(e) {
       console.error(e);
     }
   }
 
+  useEffect(() => {
+    debounce(getSystems, search);
+  }, [search]);
+
+  useEffect(() => {
+    getSystems();
+  }, []);
+
   const columns = {
     id: {
       label: 'ID',
       transform: id => <Link to={`/systems/${id}`}>{id}</Link>
-    },
-    type: {
-      label: 'Type'
     },
     planets_count: {
       label: 'Planets',
@@ -71,6 +74,7 @@ const Faction = () => {
 
   return <div>
     <h2>Systems</h2>
+    <Input type='text' value={search} onChange={setSearch} className='margin' placeholder='Search' />
     <Link to='/systems/0'>Create</Link>
     <Table data={systems} columns={columns} actions={actions} />
   </div>

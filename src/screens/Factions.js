@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { bareAxios as axios } from '../services/Axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
-import { Table } from '../components';
+import { Table, Input } from '../components';
+import debounce from '../hooks/useDebounce';
 
 const Faction = () => {
   const [ factions, setFactions ] = useState([]);
+  const [ search, setSearch ] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,12 +16,16 @@ const Faction = () => {
 
   const getFactions = async () => {
     try {
-      const res = await axios.get('factions');
+      const res = await axios.get('factions', { params: { search }});
       setFactions(res.data);
     } catch(e) {
       console.error(e);
     }
-  }
+  };
+
+  useEffect(() => {
+    debounce(getFactions, search);
+  },[search]);
 
   const columns = {
     id: {
@@ -70,6 +76,7 @@ const Faction = () => {
 
   return <div>
     <h2>Factions</h2>
+    <Input type='text' value={search} onChange={setSearch} className='margin' placeholder='Search' />
     <Link to='/factions/0'>Create</Link>
     <Table data={factions} columns={columns} actions={actions} />
   </div>
