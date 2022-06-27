@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Systems from './screens/Systems';
 import Factions from './screens/Factions';
 import Faction from './screens/Faction';
 import { Routes, Route, Link } from "react-router-dom";
@@ -24,7 +25,6 @@ const App = () => {
   const [ windowDimension, setWindowDimension ] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    console.log('useEffect window', window);
     const dimensionListener = window.addEventListener('resize', updateWindowDimensions);
 
     return dimensionListener;
@@ -43,6 +43,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Factions />} />
           <Route path="/factions/:id" element={<Faction />} />
+          <Route path="/systems/" element={<Systems />} />
         </Routes>
       </div>
     </div>
