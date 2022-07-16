@@ -3,6 +3,7 @@ import Placeholder from './screens/Placeholder';
 import Systems from './screens/Systems';
 import Factions from './screens/Factions';
 import Faction from './screens/Faction';
+import Technologies from './screens/Technologies';
 import { Routes, Route, Link } from "react-router-dom";
 
 import './services/IconLibrary';
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="/" element={<Factions />} />
           <Route path="/factions/:id" element={<Faction />} />
           <Route path="/systems/" element={<Systems />} />
+          <Route path="/technologies/" element={<Technologies />} />
         </Routes>
       </div>
     </div>
