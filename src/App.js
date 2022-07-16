@@ -4,6 +4,7 @@ import Systems from './screens/Systems';
 import Factions from './screens/Factions';
 import Faction from './screens/Faction';
 import Technologies from './screens/Technologies';
+import Technology from './screens/Technology';
 import { Routes, Route, Link } from "react-router-dom";
 
 import './services/IconLibrary';
@@ -51,6 +52,7 @@ const App = () => {
           <Route path="/factions/:id" element={<Faction />} />
           <Route path="/systems/" element={<Systems />} />
           <Route path="/technologies/" element={<Technologies />} />
+          <Route path="/technologies/:id" element={<Technology />} />
         </Routes>
       </div>
     </div>

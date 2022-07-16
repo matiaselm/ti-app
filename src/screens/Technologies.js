@@ -71,7 +71,7 @@ const Technologies = (props) => {
     {
       icon: 'pen',
       intent: 'edit',
-      handler: row => navigate('/technologies/' + row.id)
+      handler: row => navigate('/technologies/' + row.id, { state: { name: row.name } })
     },
   ];
 
