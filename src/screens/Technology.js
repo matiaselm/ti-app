@@ -34,19 +34,15 @@ const Technology = () => {
     }
   }, [id]);
 
-  useEffect(() => {
-    setTechnology(prev => ({ ...prev, prerequisites }));
-  }, [prerequisites]);
-
   const onSubmit = async (e) => {
     e?.preventDefault();
     setSubmitting(true);
     try {
       let res;
       if(technology.id) {
-        res = await axios.put(`technologies/${technology.id}`, technology);
+        res = await axios.put(`technologies/${technology.id}`, { ...technology, prerequisites });
       } else {
-        res = await axios.post('technologies', technology);
+        res = await axios.post('technologies', { ...technology, prerequisites });
       }
       navigate(`/technologies/${res.data.id}`, { state: { name: res.data.name }});
     } catch(e) {
@@ -58,19 +54,16 @@ const Technology = () => {
   const addPrerequisite = () => {
     setPrerequisites(prev => [...prev, new TechnologyType()]);
   };
-  
 
   const removePrerequisite = (index) => {
     setPrerequisites(prev => prev.filter((_, i) => i !== index));
   };
 
-  const onChangePrerequisite = (index, key, value) => {
-    setPrerequisites(prev => prev.map((prerequisite, i) => {
-      if(i === index) {
-        prerequisite[key] = value;
-      }
-      return prerequisite;
-    }));
+  const onChangePrerequisite = (index, id) => {
+    const pre = [...prerequisites];
+    pre[index] = resources['technology_types'].find(t => t.id === id);
+    console.log(pre);
+    setPrerequisites(pre);
   };
 
   return <div className='technology margin'>
@@ -97,7 +90,7 @@ const Technology = () => {
             className='margin-top'
             label='Type'
             value={prerequisite.id}
-            onChange={(id) => onChangePrerequisite(i, 'id', id)} 
+            onChange={(id) => onChangePrerequisite(i, id)} 
             options={resources['technology_types']}
             valueKey='name'
           />
