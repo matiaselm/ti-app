@@ -71,6 +71,7 @@ const Technology = () => {
     <div className='editform rounded padding shadow'>
       <form onSubmit={onSubmit}>
         <Input className='margin-top' type='text' label='Name' value={technology.name} onChange={(name) => setTechnology(prev => ({ ...prev, name }))} />
+        <Input className='margin-top' type='text' label='Image URL' value={technology.image_url} onChange={(image_url) => setTechnology(prev => ({ ...prev, image_url }))} />
         <Input className='margin-top' type='number' label='Level' value={technology.level || 0} onChange={level => setTechnology(prev => ({ ...prev, level }))} />
         <Input className='margin-top' type='select' label='Faction ID' value={technology.faction_id} onChange={faction_id => setTechnology(prev => ({ ...prev, faction_id }))} options={resources['factions']} />
         <Input className='margin-top' type='select' label='Type ID' value={technology.technology_type_id} onChange={technology_type_id => setTechnology(prev => ({ ...prev, technology_type_id }))} options={resources['technology_types']} />

@@ -8,13 +8,20 @@ const tendencies = [
   'Unknown',
 ];
 
-class Instance {
+class DBModel {
   constructor(id = null) {
     this.id = id;
   }
 }
 
-class System extends Instance {
+class ImageAble extends DBModel {
+  constructor(image_url = null) {
+    super();
+    this.image_url = image_url;
+  }
+};
+
+class System extends ImageAble {
   constructor(number = 0, name = '', type = null, faction_id = null, anomaly_id = null, planets = []) {
     super();
     this.number = number;
@@ -26,7 +33,7 @@ class System extends Instance {
   }
 };
 
-class Planet extends Instance {
+class Planet extends ImageAble {
   constructor(system_id = null, name = '', type = null, is_special = null, production = 0, influence = 0) {
     super();
     this.system_id = system_id;
@@ -38,7 +45,7 @@ class Planet extends Instance {
   }
 };
 
-class Faction extends Instance {
+class Faction extends ImageAble {
   constructor(name = '', tendency_id = null, commodities = 0) {
     super();
     this.name = name;
@@ -47,7 +54,7 @@ class Faction extends Instance {
   }
 };
 
-class Technology extends Instance {
+class Technology extends ImageAble {
   constructor(name = '', faction_id = null, technology_type_id = null, level = null) {
     super();
     this.name = name;
@@ -57,7 +64,7 @@ class Technology extends Instance {
   }
 };
 
-class TechnologyType extends Instance {
+class TechnologyType extends ImageAble {
   constructor(name = '', color = '') {
     super();
     this.name = name;

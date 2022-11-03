@@ -32,6 +32,10 @@ const Faction = () => {
       label: 'ID',
       transform: id => <Link to={`/factions/${id}`}>{id}</Link>
     },
+    image_url: {
+      label: 'Image',
+      transform: image_url => !!image_url && <img style={{ objectFit: 'cover', maxWidth: 100 }} src={image_url} alt={image_url} />
+    },
     name: {
       label: 'Name'
     },

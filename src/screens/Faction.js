@@ -101,6 +101,7 @@ const Faction = () => {
     <div className='editform rounded padding shadow'>
       <form onSubmit={onSubmit}>
         <Input className='margin-top' type='text'   label='Name'        value={faction.name}             onChange={(name) => setFaction(prev => ({ ...prev, name }))} />
+        <Input className='margin-top' type='text'   label='Image URL'   value={faction.image_url}        onChange={(image_url) => setFaction(prev => ({ ...prev, image_url }))} />
         <Input className='margin-top' type='select' label='Tendency'    value={faction.tendency_id}      onChange={tendency_id => setFaction(prev => ({ ...prev, tendency_id }))} options={resources['tendencies']} />
         <Input className='margin-top' type='number' label='Commodities' value={faction.commodities || 0} onChange={commodities => setFaction(prev => ({ ...prev, commodities }))} />
         <Input className='margin-top' type='submit' onClick={onSubmit} loading={submitting}>Tallenna</Input>
@@ -116,6 +117,7 @@ const Faction = () => {
         <Button icon='times' className='margin-top transparent' onClick={() => removeSystem(i)}>Remove system</Button>
         <form onSubmit={onSubmit}>
           <Input type='number' className='margin-top' label='Number' value={system.number} onChange={(number) => onChangeSystems(i, 'number', number)} />
+          <Input type='number' className='margin-top' label='Image URL' value={system.image_url} onChange={(image_url) => onChangeSystems(i, 'image_url', image_url)} />
           <Input type='select' className='margin-top' label='Anomaly' value={system.anomaly_id} onChange={(anomaly_id) => onChangeSystems(i, 'anomaly_id', anomaly_id)} options={resources['anomalies']} valueKey='type' />
         </form>
         <Button className='margin-top' onClick={() => addPlanet(i)} icon='plus'>Add planet</Button>
@@ -124,6 +126,7 @@ const Faction = () => {
             <Button className='margin-top' icon='minus' onClick={() => removePlanet(j, i)}>Remove planet</Button>
             <form onSubmit={onSubmit}>
               <Input type='text' label='Name' value={planet.name} onChange={(name) => onChangePlanets(j, i, 'name', name)} />
+              <Input type='text' label='Image URL' value={planet.image_url} onChange={(image_url) => onChangePlanets(j, i, 'image_url', image_url)} />
               <Input type='text' label='Type' value={planet.type} onChange={(type) => onChangePlanets(j, i, 'type', type)} />
               <div className='row'>
                 <Input type='number' label='Production' value={planet.production} onChange={(production) => onChangePlanets(j, i, 'production', production)} />
